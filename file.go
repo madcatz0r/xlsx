@@ -261,8 +261,9 @@ func (f *File) MarshallParts() (map[string]string, error) {
 
 	if f.styles == nil {
 		f.styles = newXlsxStyleSheet(f.theme)
+		f.styles.reset()
 	}
-	f.styles.reset()
+	
 	if len(f.Sheets) == 0 {
 		err := errors.New("Workbook must contains atleast one worksheet")
 		return nil, err
